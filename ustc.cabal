@@ -1,0 +1,77 @@
+cabal-version: 3.4
+name: ustc
+version: 0.1.0.0
+license: BSD-3-Clause
+
+library
+  default-language: Haskell2010
+  hs-source-dirs: src
+  exposed-modules:
+    USTC.CAS
+    USTC.EPC
+    USTC.Mail
+    USTC.YJS
+  default-extensions:
+    OverloadedStrings
+    RecordWildCards
+  ghc-options: -Wall -F -pgmF=record-dot-preprocessor
+  build-depends:
+    aeson                             >= 2.0.3 && < 2.1,
+    base                              >= 4.15.1 && < 4.16,
+    containers                        >= 0.6.4 && < 0.7,
+    bytestring                        >= 0.10.12 && < 0.11,
+    text                              >= 1.2.5 && < 1.3,
+    time                              >= 1.9.3 && < 1.10,
+    async                             >= 2.2.4 && < 2.3,
+    encoding                          >= 0.8.6 && < 0.9,
+    http-client                       >= 0.7.11 && < 0.8,
+    lens                              >= 5.1 && < 5.2,
+    mime-mail                         >= 0.5.1 && < 0.6,
+    record-hasfield                   >= 1.0 && < 1.1,
+    scalpel                           >= 0.6.2 && < 0.7,
+    smtp-mail                         >= 0.3.0 && < 0.4,
+    split                             >= 0.2.3 && < 0.3,
+    wreq                              >= 0.5.3 && < 0.6,
+
+executable yjsbot
+  default-language: Haskell2010
+  main-is: yjsbot.hs
+  hs-source-dirs: bin
+  default-extensions:
+    BangPatterns
+    LambdaCase
+    NumericUnderscores
+    OverloadedStrings
+    ScopedTypeVariables
+  ghc-options: -Wall -threaded -rtsopts -F -pgmF=record-dot-preprocessor
+  build-depends:
+    base, 
+    containers,
+    record-hasfield,
+    sqlite-simple                     >= 0.4.18 && < 0.5,  
+    text,
+    time,
+    ustc
+
+executable epcbot
+  default-language: Haskell2010
+  main-is: epcbot.hs
+  hs-source-dirs: bin
+  default-extensions:
+    BangPatterns
+    LambdaCase
+    NumericUnderscores
+    OverloadedStrings
+    RecordWildCards
+    ScopedTypeVariables
+  ghc-options: -Wall -threaded -rtsopts -F -pgmF=record-dot-preprocessor
+  build-depends:
+    base,
+    async,
+    containers,
+    http-client,
+    record-hasfield,
+    text,
+    time,
+    ustc,
+    wreq
