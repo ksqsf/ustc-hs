@@ -58,7 +58,7 @@ epcConfig = EPC.Config epcUser epcPass
 
 -- |通知配置 (SENSITIVE)
 notifyConfig :: Email.Config
-notifyConfig = Email.Config "email address" "email password"
+notifyConfig = Email.Config emailUser emailPass
 
 -- |程序入口
 main :: IO ()
